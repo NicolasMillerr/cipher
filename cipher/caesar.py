@@ -12,6 +12,7 @@ class Caesar:
 
     def decode(self, ciphertext):
         plaintext = "".join(self._shift(letter, -self.key) for letter in ciphertext.lower())
+        return plaintext
 
     def _shift(self, letter, n):
         if letter in self.alphabet:

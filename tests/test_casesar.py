@@ -11,6 +11,6 @@ def test_encode():
     assert machine_1.encode("hello my name is nic") == "IFMMP NZ OBNF JT OJD"
     assert machine_1.encode("hello, my name is nic") == "IFMMP, NZ OBNF JT OJD"
 
-def decode():
+def test_decode():
     assert machine_1.decode("BC") == "ab"
     assert machine_1.decode("IFMMP NZ OBNF JT OJD") == "hello my name is nic"

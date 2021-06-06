@@ -1,5 +1,10 @@
 alphabet = "abcdefghijklmnopqrstuvwxyz"
+from .machine import Machine
 
+
+class CaesarMachine(Machine):
+    def __init__(self, key):
+        super().__init__(key)
 
 def clocksum(x, n):
     if x + n > 25:

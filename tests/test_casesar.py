@@ -1,4 +1,5 @@
-from cipher import shift, encode, decode
+import cipher
+from cipher.caesar import shift, encode, decode
 
 def test_shift():
     assert shift("a", 1) == "b"

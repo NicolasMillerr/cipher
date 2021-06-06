@@ -1,36 +1,25 @@
-alphabet = "abcdefghijklmnopqrstuvwxyz"
-from .machine import Machine
+"""Implements the Caesar class which can encode and decode caesar ciphers"""
 
-
-class CaesarMachine(Machine):
+class Caesar:
     def __init__(self, key):
-        super().__init__(key)
+        """This should be implemented by future cipher machines. Set the key"""
+        self.alphabet = "abcdefghijklmnopqrstuvwxyz"
+        self.key=key
 
-def clocksum(x, n):
-    if x + n > 25:
-        return x + n - 26
-    return x + n
+    def encode(self, plaintext):
+        ciphertext = "".join(self._shift(letter, self.key).upper() for letter in plaintext)
+        return ciphertext
 
+    def decode(self, ciphertext):
+        plaintext = "".join(self._shift(letter, -self.key) for letter in ciphertext.lower())
 
-def shift(letter, n):
-    if letter in alphabet:
-        return alphabet[clocksum(alphabet.find(letter), n)]
-    return letter
+    def _shift(self, letter, n):
+        if letter in self.alphabet:
+            return self.alphabet[self._clocksum(self.alphabet.find(letter), n)]
+        return letter
 
+    def _clocksum(self, x, n):
+        if x + n >= len(self.alphabet):
+            return x + n - 26
+        return x + n
 
-def encode(plaintext, order):
-
-    return "".join(shift(letter, order).upper() for letter in plaintext)
-
-
-def decode(ciphertext, order):
-
-    return "".join(shift(letter, -order) for letter in ciphertext.lower())
-
-
-def main():
-    print(len(alphabet))
-
-
-if __name__ == "__main__":
-    main()

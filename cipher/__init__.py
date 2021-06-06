@@ -1,1 +1,1 @@
-from .caesar import encode, decode, shift
+from .caesar import Caesar
